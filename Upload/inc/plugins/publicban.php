@@ -54,9 +54,9 @@
 		'; 
 		
 		$templates['publicban_signature'] = '
-		<div style="color: #800F0F; padding:8px 35px 8px 14px; background: #FFF6BF; text-shadow:0 1px 0 rgba(255, 255, 255, 0.5); border: 1px solid #FFDF5E; -webkit-border-radius:4px;-moz-border-radius: 4px;border-radius:4px;">
-			{$lang->publicban_sig_prefix} {$banreason} {$timeremaining}
-		</div>
+<div style="color: #800F0F; padding:8px 35px 8px 14px; background: #FFF6BF; text-shadow:0 1px 0 rgba(255, 255, 255, 0.5); border: 1px solid #FFDF5E; -webkit-border-radius:4px;-moz-border-radius: 4px;border-radius:4px;">
+		{$lang->publicban_sig_prefix} {$banreason} {$timeremaining}
+</div>
 		'; 
 		
 		foreach($templates as $title => $template_new){
@@ -70,7 +70,7 @@
 			'description' => $db->escape_string($lang->publicban_desc),
 			'disporder' => $rows+3,
 			'isdefault' => 0
-		); // yes, we're escaping data from language strings, just in case someone decides to put something suspicious into a language translation file. 
+		); 
 		
 		$group['gid'] = $db->insert_query("settinggroups", $setting_group); // inserts new group for settings into the database. 
 		
@@ -163,7 +163,6 @@
 		$db->delete_query('settings','gid = "'.$groupid.'"');
 		$db->delete_query('settinggroups','gid = "'.$groupid.'"');
 		rebuild_settings();	
-	
 	}
 	
 	
@@ -247,7 +246,6 @@
 			$parser = new postParser();
 				
 			if (($mybb->settings['publicban_enabled'] != 1) || ($mybb->settings['publicban_enabled_signature'] == 0)) {
-				//($mybb->settings['publicban_enabled'] != "signature")
 				return; 
 			}
 			
@@ -267,7 +265,7 @@
 			}
 			
 			if (!publicban_permissions($post['usergroup'], $post['additionalgroups'])) {
-				return; // Public Ban Reason is not enabled for this usergroup. This is only really useful when there are multiple banned usergroups. 
+				return; // Public Ban Reason is not enabled for this usergroup. 
 			}
 			
 			$timeremaining = publicban_time_remaining($lifted, $bantime); // format time remaining using the same format used for the mod CP. 		
@@ -344,15 +342,12 @@
 	
 				if($remaining < 3600) {
 					$timeremaining = "({$timeremaining} {$lang->ban_remaining})";
-					// $color = "color: red;";
 				}
 				else if($remaining < 86400) {
 					$timeremaining = "({$timeremaining} {$lang->ban_remaining})";
-					// $color = "color: maroon;";
 				}
 				else if($remaining < 604800) {
 					$timeremaining = "({$timeremaining} {$lang->ban_remaining})";
-					// $color = "color: green;";
 				}
 				else {
 					$timeremaining = "({$timeremaining} {$lang->ban_remaining})";
