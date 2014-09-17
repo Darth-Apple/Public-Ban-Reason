@@ -4,9 +4,9 @@ This plugin also allows you to configure which usergroups this plugin is enabled
 
 Installation: 
 	
-	 - Upload the contents of the /Upload directory to your MyBB root directory
+	 - Upload the contents of /Upload to your MyBB root directory
 	 - Activate via ACP -> Configuration -> Plugins
-	 - This plugin was designed for MyBB 1.8, but is fully backwards compatible with MyBB 1.6 forums. 
+	 - This plugin was designed for MyBB 1.8, but is backwards compatible with MyBB 1.6 forums as well. 
 
 Replacing signatures with ban reasons: 
 	
