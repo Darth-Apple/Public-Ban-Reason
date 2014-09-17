@@ -179,10 +179,8 @@
 			"allow_mycode" => 1,
 			"allow_smilies" => 1,
 			"allow_imgcode" => 0,
-			"me_username" => $post['username'],
 			"filter_badwords" => 1
 		);
-		$parser = new postParser();
 	
 		if ($bg_color == "trow2") $bg_color = "trow1";
 		
@@ -195,19 +193,21 @@
 		}
 		
 		$query = $db->query("
-			SELECT u.usergroup, u.additionalgroups, b.reason, b.lifted, b.bantime
+			SELECT u.username, u.usergroup, u.additionalgroups, b.reason, b.lifted, b.bantime
 			FROM ".TABLE_PREFIX."users u
 			LEFT JOIN " . TABLE_PREFIX . "banned b ON b.uid = u.uid
 			WHERE u.uid =". (int) $profileID);
 
 		while($data = $db->fetch_array($query)) {
-			$banned = array();	
 			$banreason = $parser->parse_message($data['reason'], $parser_options);
 			$usergroup = $data['usergroup'];
 			$additionalgroups = $data['additionalgroups'];
 			$lifted = $data['lifted'];
+			$parser_options['me_username'] = data['username']; 
 			$bantime = $data['bantime'];
 		}	
+		
+		$parser = new postParser();
 		
 		if(!$banreason) $banreason = $lang->publicban_none;
 		
@@ -253,7 +253,6 @@
 				WHERE uid =". (int) $post['uid']);
 	
 			while($data = $db->fetch_array($query)) {
-				$banned = array();	
 				$banreason = $data['reason'];	
 				$lifted = $data['lifted'];
 				$bantime = $data['bantime'];					
