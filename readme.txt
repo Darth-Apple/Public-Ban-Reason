@@ -1,6 +1,6 @@
 This plugin allows MyBB to display ban reasons publicly on the forum. This plugin can be configured to display ban reasons and expiration dates on the profiles, signatures, or both. (When signature mode is enabled, the user's signature is replaced with the ban reason, which may be useful for removing spam links from spambots. The signatures are not deleted, so as soon as the ban expires, the user's actual signature will return. )
 
-This plugin also allows you to configure which usergroups this plugin is enabled for, which may be useful if you have multiple banned usergroups. On MyBB 1.6 forums, enter -1 to select all usergroups (MyBB 1.8 has support for a better way to do this). Note that the ban reasons will only display if the user is banned and is in one of the enabled usergroups. If you have enabled the registered group, for example, this plugin will not affect unbanned users. In general, it's safe to leave all usergroups enabled. If this plugin is installed on MyBB 1.6, enter -1 to enable all usergroups. 
+This plugin also allows you to configure which usergroups this plugin is enabled for, which may be useful if you have multiple banned usergroups. Note that the ban reasons will only display if the user is banned and is in one of the enabled usergroups. If you have enabled the registered group, for example, this plugin will not affect unbanned users. In general, it's safe to leave all usergroups enabled. If this plugin is installed on MyBB 1.6, enter -1 to enable all usergroups. 
 
 Installation: 
 	
