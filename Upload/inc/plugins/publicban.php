@@ -112,7 +112,7 @@
 		$settings[] = array(
 			'name' => 'publicban_enabled_signature',
 			'title' => $db->escape_string($lang->publicban_signature),
-			'description' => $db->escape_string($lang->publicban_signature),
+			'description' => $db->escape_string($lang->publicban_signature_desc),
 			'optionscode' => 'yesno',
 			'value' => '1',
 			'disporder' => 4,
