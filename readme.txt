@@ -20,7 +20,7 @@ Usergroup Permissions:
 		1) The user is banned
 		2) The user resides in an enabled usergroup
 		
-	- This setting is primarily useful for controlling which banned usergroups the ban reason will display for. For example, if you want the ban reasons to show for spambots and for regular banned users, but don't want to show ban reasons for users removed for sensitive reasons, you can set two ban groups and only enable the primary banned usergroup via the plugin settings. 
+	- This setting is primarily useful for controlling which banned usergroups the ban reason will display for. For example, if you want the ban reasons to show for spambots and for regular banned users, but don't want to show ban reasons for users removed for sensitive reasons, you can set two banned usergroups and only enable the primary banned usergroup via the plugin settings. 
 	- MyBB apparently only checks the primary usergroup to detect if a user is banned. This plugin, by contrast, will consider you banned if you reside in any usergroup that is a banned usergroup. For example, if your primary usergroup is "Registered," but you also reside in the "Banned" usergroup as an additional group, this plugin will consider you banned. 
 	 
 Licence & Copyright: 
