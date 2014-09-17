@@ -181,6 +181,7 @@
 			"allow_imgcode" => 0,
 			"filter_badwords" => 1
 		);
+		$parser = new postParser();
 	
 		if ($bg_color == "trow2") $bg_color = "trow1";
 		
@@ -199,15 +200,14 @@
 			WHERE u.uid =". (int) $profileID);
 
 		while($data = $db->fetch_array($query)) {
+			$parser_options['me_username'] = $data['username'];
 			$banreason = $parser->parse_message($data['reason'], $parser_options);
 			$usergroup = $data['usergroup'];
 			$additionalgroups = $data['additionalgroups'];
-			$lifted = $data['lifted'];
-			$parser_options['me_username'] = data['username']; 
+			$lifted = $data['lifted']; 
 			$bantime = $data['bantime'];
 		}	
 		
-		$parser = new postParser();
 		
 		if(!$banreason) $banreason = $lang->publicban_none;
 		
