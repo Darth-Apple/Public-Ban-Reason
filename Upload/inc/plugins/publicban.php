@@ -47,13 +47,17 @@
 		$templates = array();
 		
 		$templates['publicban_profile'] = '
-		<tr>
-			<td class="{$bg_color}" style="width: 30%;"><strong>{$lang->publicban}</strong></td>
-			<td class="{$bg_color}" style="color: green; ">{$banreason} {$timeremaining}</td>
-		</tr>
+<tr>
+		<td class="{$bg_color}" style="width: 30%;"><strong>{$lang->publicban}</strong></td>
+		<td class="{$bg_color}" style="color: green; ">{$banreason} {$timeremaining}</td>
+</tr>
 		'; 
 		
-		$templates['publicban_signature'] = '<span style="color: red;">{$lang->publicban_sig_prefix} {$banreason} {$timeremaining}</span>'; 
+		$templates['publicban_signature'] = '
+<div style="color: #CF0000; background-color:#fcf8e3; padding:8px 35px 8px 14px; text-shadow:0 1px 0 rgba(255, 255, 255, 0.5); border: 1px solid #F7E5C5; -webkit-border-radius:4px;-moz-border-radius: 4px;border-radius:4px;">
+		{$lang->publicban_sig_prefix} {$banreason} {$timeremaining}
+</div>
+		'; 
 		
 		foreach($templates as $title => $template_new){
 			$template = array('title' => $db->escape_string($title), 'template' => $db->escape_string($template_new), 'sid' => '-1', 'dateline' => TIME_NOW, 'version' => '1800');
@@ -329,6 +333,8 @@
 		global $mybb, $lang;
 		if ($mybb->settings['publicban_liftdate'] == 1) {
 			$lang->load("modcp");
+			$color = null;
+			
 			if(($lifted == 'perm') || ($lifted == '') || ($bantime == 'perm') || ($bantime == '---')) {
 				$timeremaining = '('.$lang->permanent.')';
 			}
@@ -337,13 +343,16 @@
 				$timeremaining = nice_time($remaining, array('short' => 1, 'seconds' => false))."";
 	
 				if($remaining < 3600) {
-					$timeremaining = "<span style=\"color: red;\">({$timeremaining} {$lang->ban_remaining})</span>";
+					$timeremaining = "({$timeremaining} {$lang->ban_remaining})";
+					// $color = "color: red;";
 				}
 				else if($remaining < 86400) {
-					$timeremaining = "<span style=\"color: maroon;\">({$timeremaining} {$lang->ban_remaining})</span>";
+					$timeremaining = "({$timeremaining} {$lang->ban_remaining})";
+					// $color = "color: maroon;";
 				}
 				else if($remaining < 604800) {
-					$timeremaining = "<span style=\"color: green;\">({$timeremaining} {$lang->ban_remaining})</span>";
+					$timeremaining = "({$timeremaining} {$lang->ban_remaining})";
+					// $color = "color: green;";
 				}
 				else {
 					$timeremaining = "({$timeremaining} {$lang->ban_remaining})";
