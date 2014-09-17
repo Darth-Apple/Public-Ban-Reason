@@ -54,9 +54,9 @@
 		'; 
 		
 		$templates['publicban_signature'] = '
-<div style="color: #CF0000; background-color:#fcf8e3; padding:8px 35px 8px 14px; text-shadow:0 1px 0 rgba(255, 255, 255, 0.5); border: 1px solid #F7E5C5; -webkit-border-radius:4px;-moz-border-radius: 4px;border-radius:4px;">
-		{$lang->publicban_sig_prefix} {$banreason} {$timeremaining}
-</div>
+		<div style="color: #800F0F; padding:8px 35px 8px 14px; background: #FFF6BF; text-shadow:0 1px 0 rgba(255, 255, 255, 0.5); border: 1px solid #FFD324; -webkit-border-radius:4px;-moz-border-radius: 4px;border-radius:4px;">
+			{$lang->publicban_sig_prefix} {$banreason} {$timeremaining}
+		</div>
 		'; 
 		
 		foreach($templates as $title => $template_new){

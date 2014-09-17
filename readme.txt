@@ -8,6 +8,14 @@ Installation:
 	 - Activate via ACP -> Configurations -> Plugins
 	 - This plugin was designed for 1.8, but is fully backwards compatible with MyBB 1.6 forums. 
 	 
+Customization: 
+
+		- This plugin adds two templates as global templates. You can modify the publicban_profile and publicban_signature templates as you'd like. For example, and alternative style for the 'publicban_signature' could be: 
+		
+		<div style="color: #CF0000; background-color:#fcf8e3; padding:8px 35px 8px 14px; text-shadow:0 1px 0 rgba(255, 255, 255, 0.5); border: 1px solid #F7E5C5; -webkit-border-radius:4px;-moz-border-radius: 4px;border-radius:4px;">
+			{$lang->publicban_sig_prefix} {$banreason} {$timeremaining}
+		</div>
+	 
 Licence & Copyright: 
 
  /*     This file is part of Public Ban
